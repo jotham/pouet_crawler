@@ -10,10 +10,11 @@ function getProdLinksForPartyYear(party, linkType, callback){
             console.log('getProdsForPartyYear %j', party, prod.id, err);
             return callback(err);
          } else {
-            var link = _.result(_.find(result.prod.downloadLinks, function(item){ return linkType.test(item.type);}), 'link');
+            /*var link = _.result(_.find(result.prod.downloadLinks, function(item){ return linkType.test(item.type);}), 'link');
             if ( link ) {
                prodLinks.push({'id': prod.id, 'name': prod.name, 'link': link});
-            }
+            }*/
+            prodLinks.push({'id': prod.id, 'name': prod.name, 'link': result.prod.downloadLinks});
             return callback(err);
          }
       });
@@ -46,7 +47,7 @@ function getLinksForParty(party, firstYear, lastYear, linkType, callback){
          console.error('getLinksForParty failed', err);
          return callback(err);
       } else {
-         console.log('getLinksForParty done party %s with links: %j', party.name, partyLinks);
+         console.log('getLinksForParty done party id=%s name="%s"', party.id, party.name);
          return callback(err, partyLinks);
       }
    });

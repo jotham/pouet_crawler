@@ -1,5 +1,6 @@
 var shared = require('./shared'),
-    async = require('async');
+    async = require('async'),
+    _ = require('lodash');
 
 function getParties(){
    var parties = [];

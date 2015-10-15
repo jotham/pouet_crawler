@@ -1,0 +1,25 @@
+{
+  "name": "pouet_crawler",
+  "version": "1.0.0",
+  "description": "Pouet Crawler",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jotham/pouet_crawler.git"
+  },
+  "author": "",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/jotham/pouet_crawler/issues"
+  },
+  "homepage": "https://github.com/jotham/pouet_crawler#readme",
+  "dependencies": {
+    "async": "^1.4.2",
+    "jsonfile": "^2.2.3",
+    "lodash": "^3.10.1",
+    "request": "^2.65.0"
+  }
+}

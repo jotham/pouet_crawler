@@ -4,7 +4,7 @@ var request = require('request'),
     _ = require('lodash'),
     path = require('path');
 
-var concurrency = 4;
+var concurrency = 8;
 var api = 'http://api.pouet.net/v1';
 var visited = {};
 

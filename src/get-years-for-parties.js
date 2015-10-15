@@ -71,5 +71,5 @@ function getLinks(parties, firstYear, lastYear, linkTypePattern){
 }
 
 var parties = require('../data/getParties.json');
-getLinks(parties.splice(1), 1995, 2015, /youtube/i);
+getLinks(parties, 1995, 2015, /capped/i);
 

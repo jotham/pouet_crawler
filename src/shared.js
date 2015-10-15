@@ -5,7 +5,7 @@ var request = require('request'),
     path = require('path');
 
 var concurrency = 4;
-var api = 'http://api.pouet.net/v1/party/?';
+var api = 'http://api.pouet.net/v1';
 var visited = {};
 
 module.exports = {};
@@ -19,7 +19,7 @@ var queue = async.queue(function crawl(path, next){
       if ( err ) {
          return next(err, null);
       }
-      visited[path] = true;
+      visited[path] = body;
       return next(null, body);
    });
 }, concurrency);
@@ -27,6 +27,7 @@ var queue = async.queue(function crawl(path, next){
 function appendTask(path, callback){
    if ( visited[path] ) {
       console.log('Already visited, exiting chain', path);
+      callback(null, visited[path]); // Just return what we got
    } else {
       console.log(path);
       queue.push(path, callback);
@@ -57,6 +58,18 @@ function queryAndAppend(collection, query, callback){
    });
 }
 module.exports.queryAndAppend = queryAndAppend;
+
+function queryAndReturn(query, callback){
+   jsonQuery(query, function(err, result){
+      if ( err || result.error ) {
+         error('queryAndAppend', query, err ? err : result.error);
+      } else {
+         console.log('Got result for query %s', query);
+      }
+      return callback(err, result);
+   });
+}
+module.exports.queryAndReturn = queryAndReturn;
 
 function saveData(filename, collection){
    jsonfile.writeFileSync(path.join(__dirname, '..', 'data', filename), collection, {spaces: 3});

@@ -1,11 +1,11 @@
 ifeq (,$(shell which node))
-   $(error "Requires node in $PATH")
+   $(error "Requires node in \$PATH")
 endif
 ifeq (,$(shell which npm))
-   $(error "Requires npm in $PATH")
+   $(error "Requires npm in \$PATH")
 endif
 ifeq (,$(shell which entr))
-   $(error "Requires entr in $PATH")
+   $(error "Requires entr in \$PATH")
 endif
 
 get-parties:
